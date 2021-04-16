@@ -1,0 +1,26 @@
+.searchHeader {
+  border: 1px solid black;
+  padding: 2px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.bookResultList {
+  border: 1px solid black;
+  padding: 2px;
+}
+
+.bookTypeFilter {
+  border: 1px solid black;
+  padding: 2px;
+}
+
+.bookResultList {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.bookResultItem {
+  border: 1px solid black;
+  padding: 10px;
+}
