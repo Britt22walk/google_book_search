@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./PrintTypeFilter.css";
 
 class PrintTypeFilter extends Component {
   render() {

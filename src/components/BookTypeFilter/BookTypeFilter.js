@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./BookTypeFilter.css";
 
 class BookTypeFilter extends Component {
   render() {
