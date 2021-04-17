@@ -5,11 +5,10 @@ import "./SearchHeader.css";
 
 class SearchHeader extends Component {
   render() {
-    const { handleSearchClick } = this.props;
     return (
       <div className="searchHeader">
         <h1>Google Book Search</h1>
-        <TextSearchBox onClick={handleSearchClick} />
+        <TextSearchBox onSearchClick={this.props.onSearchClick} />
         <FilterOptions />
       </div>
     );

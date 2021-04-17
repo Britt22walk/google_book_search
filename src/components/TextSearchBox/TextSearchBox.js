@@ -3,7 +3,6 @@ import "./TextSearchBox.css";
 
 class TextSearchBox extends Component {
   render() {
-    const { handleSearchClick } = this.props;
     return (
       <div className="textSearchBox">
         <label>Search</label>
@@ -11,9 +10,7 @@ class TextSearchBox extends Component {
         <button
           type="button"
           className="bi bi-menu-button"
-          onClick={function () {
-            console.log("clicked!");
-          }}
+          onClick={this.props.onSearchClick}
         >
           Search
         </button>
