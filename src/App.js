@@ -23,10 +23,39 @@ const books = [
 ];
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: [],
+    };
+  }
+
+  handleSearchClick = () => {
+    console.log(this.state.books);
+  };
+  /*
+  componentDidMount() {
+    const url = "https://www.googleapis.com/books/v1/volumes?q=harry+potter";
+    fetch(url)
+      .then((response) => {
+        if (response.ok) {
+          throw new Error("Something went wrong");
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+*/
   render() {
     return (
       <main className="App">
-        <SearchHeader />
+        <SearchHeader onClick={this.handleSearchClick} />
         <BookResultList books={books} />
       </main>
     );

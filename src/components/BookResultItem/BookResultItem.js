@@ -4,7 +4,7 @@ import "./BookResultItem.css";
 export default function BookResultItem(props) {
   return (
     <div className="bookResultItem">
-      <h2>{props.title}e</h2>
+      <h2>{props.title}</h2>
       <div className="bookResults_image">
         <img src={props.image} />
       </div>
