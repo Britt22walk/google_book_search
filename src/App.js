@@ -22,19 +22,12 @@ const books = [
   },
 ];
 
-class App extends Component() {
-  constructor(props) {
-    super(props);
-    this.state = {
-      books: [],
-    };
-  }
-
+class App extends Component {
   render() {
     return (
       <main className="App">
         <SearchHeader />
-        <BookResultList books={this.state.books} />
+        <BookResultList books={books} />
       </main>
     );
   }
