@@ -7,7 +7,10 @@ class PrintTypeFilter extends Component {
       <div className="printTypeFilter">
         <label>Print Type</label>
         <select name="print_type" id="print_type">
-          <option value="unknown">Unknown</option>
+          <option value="plaeholder">Select</option>
+          <option value="all">All</option>
+          <option value="books">Books</option>
+          <option value="magazines">Magazines</option>
         </select>
       </div>
     );

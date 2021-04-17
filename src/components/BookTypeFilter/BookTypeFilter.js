@@ -7,7 +7,11 @@ class BookTypeFilter extends Component {
       <div className="bookTypeFilter">
         <label>Book Type</label>
         <select name="book_type" id="book_type">
-          <option value="unknown">Unknown</option>
+          <option value="placeholder">Select</option>
+          <option value="partial">Partial</option>
+          <option value="full">Full</option>
+          <option value="free-ebooks">Free E-Books</option>
+          <option value="paid-ebooks">Paid E-Books</option>
         </select>
       </div>
     );

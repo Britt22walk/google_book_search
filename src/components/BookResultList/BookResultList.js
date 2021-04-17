@@ -4,11 +4,11 @@ import "./BookResultList.css";
 
 class BookResultList extends Component {
   render() {
-    return (
-      <div className="bookResultList">
-        <BookResultItem />
-      </div>
-    );
+    const { books } = this.props;
+    const bookList = books.map((book, idx) => (
+      <BookResultItem {...book} key={idx} />
+    ));
+    return <div className="bookResultList">{bookList}</div>;
   }
 }
 

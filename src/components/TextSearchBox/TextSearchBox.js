@@ -7,7 +7,9 @@ class TextSearchBox extends Component {
       <div className="textSearchBox">
         <label>Search</label>
         <input type="text" />
-        <button type="submit">Search</button>
+        <button type="submit" className="bi bi-menu-button">
+          Search
+        </button>
       </div>
     );
   }
