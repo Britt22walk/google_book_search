@@ -28,8 +28,8 @@ class App extends Component {
     this.state = {
       books: [],
       searchTerm: "",
-      bookFilter: "",
-      printFilter: "All",
+      bookFilter: null,
+      printFilter: null,
     };
   }
 
@@ -45,12 +45,14 @@ class App extends Component {
   }
 
   updateBookFilter(bookOption) {
+    console.log("Book Filter was updated in state!");
     this.setState({
       bookFilter: bookOption,
     });
   }
 
   updatePrintFilter(printOption) {
+    console.log("Print Filter was udpdated in state!");
     this.setState({
       printFilter: printOption,
     });
@@ -103,6 +105,9 @@ class App extends Component {
           printFilter={this.state.printFilter}
           handlePrintFilterChange={(printOption) =>
             this.updatePrintFilter(printOption)
+          }
+          handleBookFilterChange={(bookOption) =>
+            this.updateBookFilter(bookOption)
           }
           handleSearch={(userInput) => this.updateSearchTerm(userInput)}
         />
