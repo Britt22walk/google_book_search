@@ -55,14 +55,7 @@ class App extends Component {
       printFilter: printOption,
     });
   }
-  /*
-  handleUserInput = (userInput) => {
-    const searchTerms = [...this.state.searchTerm, { searchTerm: userInput }];
-    this.setState({
-      searchTerm: searchTerms,
-    });
-    console.log("handle user input");
-  };
+
   /*
   componentDidMount() {
     const url =
@@ -84,8 +77,8 @@ class App extends Component {
   }
 */
   render() {
-    return (
-      <main className="App">
+    const bookList = this.state.books.length ? (
+      <div>
         <SearchHeader
           handleSearchButtonClick={this.handleSearchButtonClick}
           searchTerm={this.state.searchTerm}
@@ -99,9 +92,24 @@ class App extends Component {
           }
           handleSearch={(userInput) => this.updateSearchTerm(userInput)}
         />
-        <BookResultList books={books} />
-      </main>
+        <BookResultList books={this.state.books} />
+      </div>
+    ) : (
+      <div>
+        <SearchHeader
+          handleSearchButtonClick={this.handleSearchButtonClick}
+          searchTerm={this.state.searchTerm}
+          bookFilter={this.state.bookFilter}
+          printFilter={this.state.printFilter}
+          handlePrintFilterChange={(printOption) =>
+            this.updatePrintFilter(printOption)
+          }
+          handleSearch={(userInput) => this.updateSearchTerm(userInput)}
+        />
+        <h2>No Books to Display! Seach for some books!</h2>
+      </div>
     );
+    return <main className="App">{bookList}</main>;
   }
 }
 
