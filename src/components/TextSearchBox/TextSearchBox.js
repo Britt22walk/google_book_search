@@ -15,7 +15,12 @@ onSubmitForm = (e) => {
           value={this.props.searchTerm}
           onChange={(e) => this.props.handleSearch(e.target.value)}
         />
-        <button type="submit" name="searchTerm" className="bi bi-menu-button">
+        <button
+          type="submit"
+          name="searchTerm"
+          className="bi bi-menu-button"
+          onClick={this.props.handleSearchButtonClick}
+        >
           Search
         </button>
       </form>

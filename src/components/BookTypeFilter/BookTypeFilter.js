@@ -6,7 +6,11 @@ class BookTypeFilter extends Component {
     return (
       <div className="bookTypeFilter">
         <label>Book Type</label>
-        <select name="book_type" id="book_type">
+        <select
+          name="book_type"
+          id="book_type"
+          onChange={(e) => this.props.handleBookFilterChange(e.target.value)}
+        >
           <option value="placeholder">Select</option>
           <option value="partial">Partial</option>
           <option value="full">Full</option>

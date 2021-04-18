@@ -40,8 +40,8 @@ class App extends Component {
     });
   }
 
-  handleButtonClick() {
-    console.log(this.state.searchTerm);
+  handleSearchButtonClick() {
+    console.log("Search button was clicked!");
   }
 
   updateBookFilter(bookOption) {
@@ -87,10 +87,16 @@ class App extends Component {
     return (
       <main className="App">
         <SearchHeader
-          handleButtonClick={this.handleButtonClick}
+          handleSearchButtonClick={this.handleSearchButtonClick}
           searchTerm={this.state.searchTerm}
           bookFilter={this.state.bookFilter}
           printFilter={this.state.printFilter}
+          handleBookFilterChange={(bookOption) =>
+            this.updateBookFilter(bookOption)
+          }
+          handlePrintFilterChange={(printOption) =>
+            this.updatePrintFilter(printOption)
+          }
           handleSearch={(userInput) => this.updateSearchTerm(userInput)}
         />
         <BookResultList books={books} />

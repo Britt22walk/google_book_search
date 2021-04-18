@@ -7,9 +7,13 @@ class FilterOptions extends Component {
   render() {
     return (
       <div className="filterOptions">
-        <PrintTypeFilter />
+        <PrintTypeFilter
+          handlePrintFilterChange={this.props.handlePrintFilterChange}
+        />
 
-        <BookTypeFilter />
+        <BookTypeFilter
+          handleBookFilterChange={this.props.handleBookFilterChange}
+        />
       </div>
     );
   }

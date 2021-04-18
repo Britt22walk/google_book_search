@@ -11,10 +11,13 @@ class SearchHeader extends Component {
         <TextSearchBox
           searchTerm={this.props.searchTerm}
           handleSearch={this.props.handleSearch}
+          handleSearchButtonClick={this.props.handleSearchButtonClick}
         />
         <FilterOptions
           bookFilter={this.props.bookFilter}
           printFilter={this.props.printFilter}
+          handleBookFilterChange={this.props.handleBookFilterChange}
+          handlePrintFilterChange={this.props.handlePrintFilterChange}
         />
       </div>
     );
