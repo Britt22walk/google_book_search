@@ -11,9 +11,9 @@ class BookTypeFilter extends Component {
           id="book_type"
           onChange={(e) => this.props.handleBookFilterChange(e.target.value)}
         >
-          <option value="placeholder">Select</option>
-          <option value="partial">Partial</option>
           <option value="full">Full</option>
+          <option value="partial">Partial</option>
+
           <option value="free-ebooks">Free E-Books</option>
           <option value="paid-ebooks">Paid E-Books</option>
         </select>

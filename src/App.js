@@ -3,7 +3,7 @@ import "./App.css";
 import SearchHeader from "./components/SearchHeader/SearchHeader";
 import BookResultList from "./components/BookResultList/BookResultList";
 
-const books = [
+/*const books = [
   {
     title: "Henry the VII",
     image: "books.jpeg",
@@ -20,7 +20,7 @@ const books = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
   },
-];
+];*/
 
 class App extends Component {
   constructor(props) {
@@ -40,8 +40,27 @@ class App extends Component {
     });
   }
 
-  handleSearchButtonClick() {
+  handleSearchButtonClick(event) {
     console.log("Search button was clicked!");
+    event.preventDefault();
+    const url =
+      "https://www.googleapis.com/books/v1/volumes?q=steinberg&key=AIzaSyDVNILpaEUyEjBltP4Hn3_6xQR4r-DSuaQ";
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Something went wrong");
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const books = Object.keys(data).map((key) => data[key].items[0]);
+        console.log(books);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   updateBookFilter(bookOption) {
@@ -58,26 +77,6 @@ class App extends Component {
     });
   }
 
-  /*
-  componentDidMount() {
-    const url =
-      "https://www.googleapis.com/books/v1/volumes?q=flowers&key=AIzaSyDVNILpaEUyEjBltP4Hn3_6xQR4r-DSuaQ";
-    fetch(url)
-      .then((response) => {
-        if (response.ok) {
-          throw new Error("Something went wrong");
-        }
-        return response;
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-*/
   render() {
     const bookList = this.state.books.length ? (
       <div>
