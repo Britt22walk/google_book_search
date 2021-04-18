@@ -27,15 +27,46 @@ class App extends Component {
     super(props);
     this.state = {
       books: [],
+      searchTerm: "",
+      bookFilter: "",
+      printFilter: "All",
     };
   }
 
-  handleSearchClick = () => {
-    console.log(this.state.books);
+  updateSearchTerm(userInput) {
+    console.log("user input is being added to state!");
+    this.setState({
+      searchTerm: userInput,
+    });
+  }
+
+  handleButtonClick() {
+    console.log(this.state.searchTerm);
+  }
+
+  updateBookFilter(bookOption) {
+    this.setState({
+      bookFilter: bookOption,
+    });
+  }
+
+  updatePrintFilter(printOption) {
+    this.setState({
+      printFilter: printOption,
+    });
+  }
+  /*
+  handleUserInput = (userInput) => {
+    const searchTerms = [...this.state.searchTerm, { searchTerm: userInput }];
+    this.setState({
+      searchTerm: searchTerms,
+    });
+    console.log("handle user input");
   };
   /*
   componentDidMount() {
-    const url = "https://www.googleapis.com/books/v1/volumes?q=harry+potter";
+    const url =
+      "https://www.googleapis.com/books/v1/volumes?q=flowers&key=AIzaSyDVNILpaEUyEjBltP4Hn3_6xQR4r-DSuaQ";
     fetch(url)
       .then((response) => {
         if (response.ok) {
@@ -55,7 +86,13 @@ class App extends Component {
   render() {
     return (
       <main className="App">
-        <SearchHeader onSearchClick={this.handleSearchClick} />
+        <SearchHeader
+          handleButtonClick={this.handleButtonClick}
+          searchTerm={this.state.searchTerm}
+          bookFilter={this.state.bookFilter}
+          printFilter={this.state.printFilter}
+          handleSearch={(userInput) => this.updateSearchTerm(userInput)}
+        />
         <BookResultList books={books} />
       </main>
     );

@@ -8,8 +8,14 @@ class SearchHeader extends Component {
     return (
       <div className="searchHeader">
         <h1>Google Book Search</h1>
-        <TextSearchBox onSearchClick={this.props.onSearchClick} />
-        <FilterOptions />
+        <TextSearchBox
+          searchTerm={this.props.searchTerm}
+          handleSearch={this.props.handleSearch}
+        />
+        <FilterOptions
+          bookFilter={this.props.bookFilter}
+          printFilter={this.props.printFilter}
+        />
       </div>
     );
   }
