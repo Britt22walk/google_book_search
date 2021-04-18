@@ -28,8 +28,8 @@ class App extends Component {
     this.state = {
       books: [],
       searchTerm: "",
-      bookFilter: null,
-      printFilter: null,
+      bookFilter: "partial",
+      printFilter: "all",
     };
   }
 
@@ -40,11 +40,30 @@ class App extends Component {
     });
   }
 
-  handleSearchButtonClick(event) {
+  handleSearchButtonClick = (event) => {
     console.log("Search button was clicked!");
     event.preventDefault();
-    const url =
-      "https://www.googleapis.com/books/v1/volumes?q=steinberg&key=AIzaSyDVNILpaEUyEjBltP4Hn3_6xQR4r-DSuaQ";
+    const apiKey = "&key=aAIzaSyDVNILpaEUyEjBltP4Hn3_6xQR4r-DSuaQ";
+    const searchUrl = "https://www.googleapis.com/books/v1/volumes?";
+    const params = {
+      q: this.state.searchTerm,
+      filter: this.state.bookFilter,
+      printFilter: this.state.printFilter,
+    };
+
+    function formatQueryParams(params) {
+      console.log(params);
+      const queryItems = Object.keys(params).map(
+        (key) => "{key}={params[key]}"
+      );
+      return queryItems.join("&");
+    }
+
+    const queryString = formatQueryParams(params);
+    console.log(queryString);
+    const url = searchUrl + queryString + apiKey;
+    console.log(url);
+
     fetch(url)
       .then((response) => {
         if (!response.ok) {
@@ -55,13 +74,11 @@ class App extends Component {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        const books = Object.keys(data).map((key) => data[key].items[0]);
-        console.log(books);
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
 
   updateBookFilter(bookOption) {
     console.log("Book Filter was updated in state!");
