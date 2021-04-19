@@ -43,18 +43,18 @@ class App extends Component {
   handleSearchButtonClick = (event) => {
     console.log("Search button was clicked!");
     event.preventDefault();
-    const apiKey = "&key=aAIzaSyDVNILpaEUyEjBltP4Hn3_6xQR4r-DSuaQ";
+    const apiKey = "&key=AIzaSyDVNILpaEUyEjBltP4Hn3_6xQR4r-DSuaQ";
     const searchUrl = "https://www.googleapis.com/books/v1/volumes?";
     const params = {
       q: this.state.searchTerm,
       filter: this.state.bookFilter,
-      printFilter: this.state.printFilter,
+      printType: this.state.printFilter,
     };
 
     function formatQueryParams(params) {
       console.log(params);
       const queryItems = Object.keys(params).map(
-        (key) => "{key}={params[key]}"
+        (key) => key + "=" + params[key]
       );
       return queryItems.join("&");
     }
