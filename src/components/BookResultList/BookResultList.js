@@ -4,9 +4,11 @@ import "./BookResultList.css";
 
 class BookResultList extends Component {
   render() {
-    const bookList = this.props.books.map((book, idx) => (
+    const { books } = this.props;
+    const bookList = books.items.map((book, idx) => (
       <BookResultItem {...book} key={idx} />
     ));
+    console.log("This is running" + bookList);
     return <div className="bookResultList">{bookList}</div>;
   }
 }

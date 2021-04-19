@@ -52,7 +52,6 @@ class App extends Component {
     };
 
     function formatQueryParams(params) {
-      console.log(params);
       const queryItems = Object.keys(params).map(
         (key) => key + "=" + params[key]
       );
@@ -60,9 +59,8 @@ class App extends Component {
     }
 
     const queryString = formatQueryParams(params);
-    console.log(queryString);
+
     const url = searchUrl + queryString + apiKey;
-    console.log(url);
 
     fetch(url)
       .then((response) => {
@@ -73,7 +71,9 @@ class App extends Component {
       })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        this.setState({
+          books: data,
+        });
       })
       .catch((err) => {
         console.log(err);
