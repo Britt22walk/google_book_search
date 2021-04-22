@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import "./App.css";
 import SearchHeader from "./components/SearchHeader/SearchHeader";
 import BookResultList from "./components/BookResultList/BookResultList";
+<<<<<<< HEAD
 
+=======
+/*
+>>>>>>> c3acce033b4dee78dde24c4fb842a326c2e41243
 const books = [
   {
     title: "Henry the VII",
@@ -26,7 +30,29 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       books: [],
+=======
+      books: [
+        {
+          title: "Henry the VII",
+          image: "books.jpeg",
+          author: "Alison Weird",
+          price: "$15.50",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+        },
+        {
+          title: "Henry I",
+          image: "books.jpeg",
+          author: "Warren Holister",
+          price: "$50",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+        },
+      ],
+      searchTerm: "",
+>>>>>>> c3acce033b4dee78dde24c4fb842a326c2e41243
       bookFilter: "partial",
       printFilter: "all",
       searchTerm: "",
@@ -98,7 +124,11 @@ class App extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     return (
+=======
+    const bookList = this.state.books ? (
+>>>>>>> c3acce033b4dee78dde24c4fb842a326c2e41243
       <div>
         <SearchHeader
           handleSearchButtonClick={this.handleSearchButtonClick}
