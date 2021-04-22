@@ -113,7 +113,7 @@ class App extends Component {
           }
           handleSearch={(userInput) => this.updateSearchTerm(userInput)}
         />
-        <BookResultList books={this.state.books} />
+        <BookResultList {...this.state.books} />
       </div>
     );
   }
