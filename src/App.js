@@ -3,7 +3,7 @@ import "./App.css";
 import SearchHeader from "./components/SearchHeader/SearchHeader";
 import BookResultList from "./components/BookResultList/BookResultList";
 
-/*const books = [
+const books = [
   {
     title: "Henry the VII",
     image: "books.jpeg",
@@ -20,16 +20,16 @@ import BookResultList from "./components/BookResultList/BookResultList";
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
   },
-];*/
+];
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       books: [],
-      searchTerm: "",
       bookFilter: "partial",
       printFilter: "all",
+      searchTerm: "",
     };
   }
 
@@ -43,6 +43,7 @@ class App extends Component {
   handleSearchButtonClick = (event) => {
     console.log("Search button was clicked!");
     event.preventDefault();
+
     const apiKey = "&key=AIzaSyDVNILpaEUyEjBltP4Hn3_6xQR4r-DSuaQ";
     const searchUrl = "https://www.googleapis.com/books/v1/volumes?";
     const params = {
@@ -61,6 +62,7 @@ class App extends Component {
     const queryString = formatQueryParams(params);
 
     const url = searchUrl + queryString + apiKey;
+    console.log(url);
 
     fetch(url)
       .then((response) => {
@@ -71,6 +73,7 @@ class App extends Component {
       })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         this.setState({
           books: data,
         });
@@ -95,7 +98,7 @@ class App extends Component {
   }
 
   render() {
-    const bookList = this.state.books.length ? (
+    return (
       <div>
         <SearchHeader
           handleSearchButtonClick={this.handleSearchButtonClick}
@@ -112,25 +115,7 @@ class App extends Component {
         />
         <BookResultList books={this.state.books} />
       </div>
-    ) : (
-      <div>
-        <SearchHeader
-          handleSearchButtonClick={this.handleSearchButtonClick}
-          searchTerm={this.state.searchTerm}
-          bookFilter={this.state.bookFilter}
-          printFilter={this.state.printFilter}
-          handlePrintFilterChange={(printOption) =>
-            this.updatePrintFilter(printOption)
-          }
-          handleBookFilterChange={(bookOption) =>
-            this.updateBookFilter(bookOption)
-          }
-          handleSearch={(userInput) => this.updateSearchTerm(userInput)}
-        />
-        <h2>No Books to Display! Seach for some books!</h2>
-      </div>
     );
-    return <main className="App">{bookList}</main>;
   }
 }
 
